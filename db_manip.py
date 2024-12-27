@@ -75,7 +75,7 @@ def db_manip():
     print()
 
     # Обновление данных
-    user_to_update = session.query(User).filter(User.id == 4).first()
+    user_to_update = session.query(User).filter(User.id == user4.id).first()
     print(f"id: {user_to_update.id}, username: {user_to_update.username}, email: {user_to_update.email}, password: "
           f"{user_to_update.password}")
     if user_to_update:
@@ -86,7 +86,7 @@ def db_manip():
           f"{user_to_update.password}")
     print()
 
-    post_to_update = session.query(Post).filter(Post.id == 1).first()
+    post_to_update = session.query(Post).filter(Post.id == post1.id).first()
     print(f"id: {post_to_update.id}, title: {post_to_update.title}, content: {post_to_update.content}, user_id: "
           f"{post_to_update.user_id}")
     if post_to_update:
@@ -104,7 +104,7 @@ def db_manip():
               f"author - id: {post.user.id}, username: {post.user.username}, email: {post.user.email}, password: "
               f"{post.user.password}")
     print()
-    post_to_delete = session.query(Post).filter(Post.id == 3).first()
+    post_to_delete = session.query(Post).filter(Post.id == post3.id).first()
     if post_to_delete:
         session.delete(post_to_delete)
         session.commit()
@@ -122,7 +122,7 @@ def db_manip():
     for post in user_posts:
         print(f"title: {post.title}, content: {post.content}")
     print()
-    user_to_delete = session.query(User).filter(User.id == 1).first()
+    user_to_delete = session.query(User).filter(User.id == user1.id).first()
     if user_to_delete:
         session.query(Post).filter(Post.user_id == user_to_delete.id).delete()
         session.delete(user_to_delete)
